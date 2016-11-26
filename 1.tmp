@@ -1,0 +1,33 @@
+
+          fprintf(stderr,"\nAVAil:%lu\n",response.in_avail());
+          const uint8_t *s=boost::asio::buffer_cast<const uint8_t*>(response.data());
+          const char *e=s+response.in_avail();
+
+    boost::match_results<const char *> m;
+    boost::regex_search(s,e,m,chunk_head_patten);
+
+          const char *p=s;
+          const char *n=s+m.position();
+          for(p=s;p!=s+11&&p!=n&&p!=e;p++)
+           {fprintf(stderr,"%02x",*p);
+           }
+          std::cerr<<std::endl;
+          for(p=s;p!=s+11&&p!=n&&p!=e;p++)
+           {fprintf(stderr,"%c",*p);
+           }
+          std::cerr<<std::endl;
+          for(p=s+m.position(),n=p+m.length();p!=n&&p!=e;p++)
+           {fprintf(stderr,"%02x",*p);
+           }
+          std::cerr<<std::endl;
+          for(p=s+m.position(),n=p+m.length();p!=n&&p!=e;p++)
+           {fprintf(stderr,"%c",*p);
+           }
+          std::cerr<<std::endl;
+
+body+=std::string(s,s+m.position());
+assert('\r'==s[m.position()]&&'\n'==s[m.position()+1]);         
+response.consume(m.position());
+          chunk_body_crlf_pendding_to_read=2;
+          boost::asio::async_read_until(*socket,response,chunk_head_patten,boost::bind(&http_client::handle_read_chunk_size,this,boost::asio::placeholders::error));
+

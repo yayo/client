@@ -1,0 +1,24 @@
+
+A HTTP(s) & SMTP client
+
+HTTP(s):
+ 1. chunk
+ 2. gzip
+ 3.1 proxy http_CONNECT
+ 3.2 proxy socks5
+
+TODO:
+ 1. SMTP
+ 2. HTTP Range (resume download)
+ 3. multipart/form-data
+ 4. INPUT ssl -> object
+ 5. write response headers to file
+ 6. proxy http_CONNECT auth
+ 7. proxy socks5 auth
+ 8. keep-alive sequence requests
+ 9. multiple requests INPUT
+ 10. requests dependency tree
+ 11. HTTP share connection
+ 12. Connection: close -> length not verified
+ 13. http cookie
+ 14. separate HTTP_proxy read status line

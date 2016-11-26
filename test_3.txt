@@ -1,0 +1,8 @@
+{
+    "host": "news.sina.com.cn",
+    "port": "80",
+    "ssl": "false",
+    "proto": "http",
+    "method": "GET",
+    "path": "\/"
+}

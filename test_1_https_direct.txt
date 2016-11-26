@@ -1,0 +1,8 @@
+{
+    "host": "ip.anysrc.net",
+    "port": "443",
+    "ssl": "true",
+    "proto": "http",
+    "method": "GET",
+    "path": "\/json"
+}
